@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from officeRes import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('home/', views.Home.as_view(), name='main'),
+    path('add_room/', views.Add_room.as_view(), name='add_room'),
+    path('room/delete/<int:id>/', views.Delete_room.as_view(), name='delete_room'),
+    path('room/modify/<int:id>/', views.Modify_room.as_view(), name='modify_room'),
+    path('room/reserve/<int:id>/', views.Reverve_room.as_view(), name='reserve_room'),
+    path('room/<int:id>/', views.Room_detail.as_view(), name='reserve_room'),
 ]

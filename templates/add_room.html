@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block zawartosc %}
+    <head>
+        <title>Add room</title>
+    </head>
+    <form method="post">
+        {% csrf_token%}
+        <input type="text" name="name" placeholder="Room name"> <br>
+        <input type="number" name="capacity" placeholder="Room capacity"> <br>
+        Has projector?: <input type="checkbox" name="projector"> <br>
+        <input type="submit">
+    </form>
+    {% if request.method == 'POST' %}
+        Incorrect data!
+    {% endif %}
+{% endblock %}

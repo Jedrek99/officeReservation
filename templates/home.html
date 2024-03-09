@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block zawartosc %}
+    <head>
+        <title>Homepage</title>
+    </head>
+    <strong>Search room:</strong>
+    <form method="post">
+    {% csrf_token %}
+        <input type="text" name="name" placeholder="Room name">
+        <input type="number" name="capacity" placeholder="Enter minimal capacity:">
+        <strong>Projector needed?</strong><input type="checkbox" name="projector">
+        <input type="submit">
+    </form>
+    <table border="1">
+        <tr align="center">
+            <th width="100">Room name</th>
+            <th width="100">Capacity</th>
+            <th width="100">Available?</th>
+            <th width="100">Projector?</th>
+            <th width="100">Modify</th>
+            <th width="100">Delete</th>
+            <th width="100">Reserve</th>
+        </tr>
+        {% for room in rooms %}
+        <tr align="center">
+            <td><a href="/room/{{ room.id }}/">{{ room.name }}</a></td>
+            <td>{{ room.capacity }}</td>
+            <td>{% if room in res %} No {% else %} Yes {% endif %}</td>
+            <td>{% if room.projector == True %} Yes
+                {% else %} No
+                {% endif %}
+            </td>
+            <td><a href="/room/modify/{{room.id}}/">Modify</a></td>
+            <td><a href="/room/delete/{{room.id}}/">X</a></td>
+            <td><a href="/room/reserve/{{room.id}}/">Reserve</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

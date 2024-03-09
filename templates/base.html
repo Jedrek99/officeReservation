@@ -1,0 +1,52 @@
+<style>
+    ul.nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li.nav {
+        float: left;
+    }
+
+    li.nav a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li.nav a:hover {
+        background-color: #111;
+    }
+    .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+</style>
+<ul class="nav">
+    <li class="nav"><a href="{% url 'main' %}">Strona główna</a></li>
+    <li class="nav"><a href="{% url 'add_room' %}">Dodaj salę</a></li>
+</ul>
+
+{% block zawartosc %}
+    <head>
+        <title>Main page</title>
+    </head>
+    <body>
+    
+    </body>
+{% endblock %}
+
+<div class="footer">
+    Jędrzej Kępka
+</div>
